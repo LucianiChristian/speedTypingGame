@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 :root {
     --green: #00b800;
     --black: black;
@@ -13,7 +15,27 @@ body {
     color: var(--green);
     background-color: var(--black);
 
+    font-family: "Press Start 2P";
+
     text-align: center;
+}
+
+.container {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 textarea, button {
@@ -21,9 +43,45 @@ textarea, button {
 }
 
 textarea {
+    font-family: inherit;
+    font-size: 1.2rem;
+
     width: 90%;
     max-width: 800px;
 
-    height: 300px;
+    height: 400px;
+    
+    padding: 15px;
+    resize: none;
+    outline: none;
+
+    box-shadow: 0px 0px 200px grey;
+
+    transition: box-shadow 0.5s;
 }
 
+textarea:focus {
+    box-shadow: 0px 0px 200px green;
+}
+
+button {
+    font-family: inherit;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+
+    padding: 10px 20px;
+
+    transition: filter 0.2s;
+}
+
+button:hover {
+    filter: brightness(0.8);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+h4 {
+    font-size: 2rem;
+}

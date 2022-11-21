@@ -3,12 +3,14 @@ import './App.css'
 
 export default function App() {
     return (
-        <div>
+        <div className="container">
             <h1>How fast do you type?</h1>
             <textarea />
-            <h4>Time remaining: </h4>
-            <button>Start</button>
-            <h4>Word count: </h4>
+            <section className="info">
+                <h4>Time remaining: </h4>
+                <h4>Word count: </h4>
+                <button>Start</button>
+            </section>
         </div>
     )
 }
