@@ -8,6 +8,7 @@ export default function App() {
     const [time, setTime] = React.useState(STARTING_TIME);
     const [isGameActive, setIsGameActive] = React.useState(false);
     const [wordCount, setWordCount] = React.useState(0);
+    const textAreaRef = React.useRef(null);
 
     React.useEffect(() => {
         if(isGameActive && time > 0) {
@@ -28,6 +29,8 @@ export default function App() {
         setText("");
         setTime(STARTING_TIME);
         setWordCount(0);
+        textAreaRef.current.disabled = false;
+        textAreaRef.current.focus();   
     }
 
     function stopGame() {
@@ -47,7 +50,7 @@ export default function App() {
     return (
         <div className="container">
             <h1>How fast do you type?</h1>
-            <textarea value={text} onChange={handleChange} disabled={!isGameActive}/>
+            <textarea ref={textAreaRef} value={text} onChange={handleChange} disabled={!isGameActive}/>
             <section className="info">
                 <h4>Time remaining: {time}</h4>
                 <h4>Word count: {wordCount}</h4>
