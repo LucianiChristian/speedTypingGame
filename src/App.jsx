@@ -2,8 +2,10 @@ import React from 'react'
 import './App.css'
 
 export default function App() {
+    const STARTING_TIME = 5;
+
     const [text, setText] = React.useState('');
-    const [time, setTime] = React.useState(5);
+    const [time, setTime] = React.useState(STARTING_TIME);
     const [isGameActive, setIsGameActive] = React.useState(false);
     const [wordCount, setWordCount] = React.useState(0);
 
@@ -12,7 +14,7 @@ export default function App() {
             secondElapse();
         }
         else if(time === 0) {
-            toggleGame();
+            stopGame();
             setWordCount(getWordCount(text));
         }
     }, [time, isGameActive])
@@ -21,8 +23,15 @@ export default function App() {
         setText(e.target.value);
     }
 
-    function toggleGame() {
-        setIsGameActive(prevIsGameActive => !prevIsGameActive);
+    function startGame() {
+        setIsGameActive(true);
+        setText("");
+        setTime(STARTING_TIME);
+        setWordCount(0);
+    }
+
+    function stopGame() {
+        setIsGameActive(false);
     }
 
     function secondElapse() {
@@ -38,11 +47,11 @@ export default function App() {
     return (
         <div className="container">
             <h1>How fast do you type?</h1>
-            <textarea value={text} onChange={handleChange}/>
+            <textarea value={text} onChange={handleChange} disabled={!isGameActive}/>
             <section className="info">
                 <h4>Time remaining: {time}</h4>
                 <h4>Word count: {wordCount}</h4>
-                <button onClick={toggleGame}>Start</button>
+                <button onClick={startGame} disabled={isGameActive}>Start</button>
             </section>
         </div>
     )

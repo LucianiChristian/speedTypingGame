@@ -61,6 +61,10 @@ textarea {
     transition: box-shadow 0.5s;
 }
 
+textarea:disabled {
+    background-color: grey;
+}
+
 textarea:hover {
     cursor: pointer;
 }
